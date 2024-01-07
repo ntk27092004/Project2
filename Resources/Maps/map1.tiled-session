@@ -1,0 +1,58 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "map1.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "Confetti (16x16).tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Fire.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Terrain.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map1.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 434.6666666666667,
+                "y": 223
+            }
+        }
+    },
+    "last.imagePath": "C:/Users/Leeches/Desktop/Leeches/Resources/Maps/Image/Traps/Fire",
+    "map.height": 30,
+    "map.lastUsedFormat": "tmx",
+    "map.layerDataFormat": null,
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 40,
+    "openFiles": [
+        "map1.tmx",
+        "Terrain.tsx",
+        "Confetti (16x16).tsx",
+        "Fire.tsx"
+    ],
+    "project": "map1.tiled-project",
+    "property.type": "int",
+    "recentFiles": [
+        "Fire.tsx",
+        "Confetti (16x16).tsx",
+        "Terrain.tsx",
+        "map1.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
