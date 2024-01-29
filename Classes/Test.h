@@ -2,13 +2,14 @@
 #define __TEST_H__
 
 #include "cocos2d.h"
-#include "HorizontalLayout.h"
+
 
 USING_NS_CC;
 
-class Test : public Sprite
+class Test : public Scene
 {
 public:
+
 	bool init() override;
 	//int count = 0;
 	CREATE_FUNC(Test);

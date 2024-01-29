@@ -1,6 +1,7 @@
 #include "EnemyChaseState.h"
 #include "EnemyStateMachine.h"
 #include "Character/Character.h"
+#include "Enemy/Enemy.h"
 
 void EnemyChaseState::enterState(Entity* owner) {
     State::enterState(owner);
@@ -12,26 +13,38 @@ void EnemyChaseState::enterState(Entity* owner) {
 
 }
 
-    std::string EnemyChaseState::updateState() {
-        Vec2 enemyPosition = _owner->getModel()->getPosition();
-        Vec2 characterPosition;
-        EntityInfo* characterInfo = new EntityInfo(1, "Hero");
-        Character* character = Character::getInstance(characterInfo);
-        if (character) {
-            characterPosition = character->getPosition();
-            const float chaseRange = 50.0f;
-            log("X-%f, Y-%f", characterPosition.x, characterPosition.y);
+std::string EnemyChaseState::updateState() {
+    Vec2 characterPosition;
 
-            if (characterPosition.x > enemyPosition.x - chaseRange &&
-                characterPosition.x < enemyPosition.x + chaseRange &&
-                characterPosition.y > enemyPosition.y - chaseRange &&
-                characterPosition.y < enemyPosition.y + chaseRange) {
-            
-                return "chase";
-            }
- 
-        }
+    // Get the character instance
+    EntityInfo info(1, "Hero");
+    Character* character = Character::getInstance(&info);
+    characterPosition = character->getCharacter(0)->getPosition();
+    EntityInfo info1(2, "Hero");
+    Enemy* enemy = Enemy::getInstance(&info1);
+    for (int i = 0; i < 4; i++) {
+        auto enemyPosition = enemy->getEnemy(i)->getPosition();
+
+        // Get the character position
+        const float chaseRange = 50.0f;
+        
+        //log("%f %f", enemyPosition.x, enemyPosition.y);
+        //log("Character Position - X: %f, Y: %f", characterPosition.x, characterPosition.y);
+
+        if (characterPosition.x > enemyPosition.x - chaseRange &&
+            characterPosition.x < enemyPosition.x + chaseRange &&
+            characterPosition.y > enemyPosition.y - chaseRange &&
+            characterPosition.y < enemyPosition.y + chaseRange) {
+            enemy->getEnemy(i)->setPosition(Vec2(enemyPosition.x + chaseRange, enemyPosition.y + chaseRange));
+            log("chasing");
+            return "chase";
     }
+    }
+
+    // Return the default state if no chase condition is met
+    return "chase";
+}
+
 
 void EnemyChaseState::exitState() {
     State::exitState();

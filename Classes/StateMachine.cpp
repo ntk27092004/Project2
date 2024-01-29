@@ -49,6 +49,10 @@ void StateMachine::update(float dt)
 void StateMachine::onEnter()
 {
     Node::onEnter();
-    _currentState = "idle";
     _states[_currentState]->enterState(_entityTarget);
+}
+
+void StateMachine::setCurrentState(std::string _stateName)
+{
+    _currentState = _stateName;
 }

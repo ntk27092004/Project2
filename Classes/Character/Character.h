@@ -6,19 +6,25 @@
 #include "State/CharacterJumpState.h"
 #include "State/CharacterIdleState.h"
 #include "State/CharacterRunState.h"
-//#include "Map/GameMap.h"
 
 class Character : public Entity
 {
 public:
-	static Character* getInstance(EntityInfo* info);
-	static Character* create(EntityInfo* info);
-	bool init(EntityInfo* info) override;
-
+    static Character* getInstance(EntityInfo* info);
+    static void addCharacter(EntityInfo* info);
+    static int getNumberOfCharacters();
+    static Character* getCharacter(int index);
+private:
+    static Character* _instance;
+    static std::vector<Character*> _characters;
+    bool init(EntityInfo* info) override;
+    bool loadAnimations() override;
+    StateMachine* _stateMachine;
 protected:
-	static Character* _instance;
-	bool loadAnimations() override;
-	StateMachine* _stateMachine;
+    bool callbackOnContactBegin(PhysicsContact& contact);
+    void callbackOnContactSeparate(PhysicsContact& contact);
+    bool _isOnGround;
+    void update(float dt) override;
 };
 
 #endif // !__CHARACTER_H__

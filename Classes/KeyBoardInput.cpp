@@ -1,7 +1,8 @@
-#include "KeyBoardInput.h"
-#include <Character/State/CharacterJumpState.h>
+﻿#include "KeyBoardInput.h"
+#include "Character/Character.h"
+#include "Entity/EntityInfo.h"
 KeyboardInput* KeyboardInput::_instance;
-
+static EntityInfo s_CharacterInfo = EntityInfo(1, "Hero");
 KeyboardInput* KeyboardInput::getInstance() {
 	if (_instance == nullptr)
 	{
@@ -23,6 +24,7 @@ bool KeyboardInput::init() {
 	this->addKey(EventKeyboard::KeyCode::KEY_A);
 	this->addKey(EventKeyboard::KeyCode::KEY_S);
 	this->addKey(EventKeyboard::KeyCode::KEY_D);
+	this->addKey(EventKeyboard::KeyCode::KEY_SPACE);
 
 	this->addKey(EventKeyboard::KeyCode::KEY_DOWN_ARROW);
 	this->addKey(EventKeyboard::KeyCode::KEY_LEFT_ARROW);
@@ -79,10 +81,8 @@ void KeyboardInput::onKeyPressed(EventKeyboard::KeyCode key, Event* ev)
 	_keys[key] = true;
 	switch (key)
 	{
-	/*case EventKeyboard::KeyCode::KEY_W:
-	case EventKeyboard::KeyCode::KEY_UP_ARROW:*/
 	case EventKeyboard::KeyCode::KEY_SPACE:
-		_vertical = 1; 
+		log("jump");
 		break;
 	case EventKeyboard::KeyCode::KEY_S:
 	case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
@@ -110,14 +110,14 @@ void KeyboardInput::onKeyReleased(EventKeyboard::KeyCode key, Event* ev)
 	{
 	/*case EventKeyboard::KeyCode::KEY_W:
 	case EventKeyboard::KeyCode::KEY_UP_ARROW:*/
-	case EventKeyboard::KeyCode::KEY_SPACE:
+	/*case EventKeyboard::KeyCode::KEY_SPACE:
 		_vertical = 0;
-		break;
+		break;*/
 	case EventKeyboard::KeyCode::KEY_S:
 	case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
 		if (_keys[EventKeyboard::KeyCode::KEY_W]
 			|| _keys[EventKeyboard::KeyCode::KEY_UP_ARROW]
-			|| _keys[EventKeyboard::KeyCode::KEY_SPACE])
+			/*|| _keys[EventKeyboard::KeyCode::KEY_SPACE]*/)
 		{
 			_vertical = 1;
 		}

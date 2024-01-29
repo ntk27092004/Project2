@@ -11,9 +11,10 @@ public:
 	std::string updateState() override;
 	void exitState() override;
 	GameMap* _map;
-
-protected:
-	
+	//CharacterJumpState() : isJumping(false) {};
+private:
+	//bool isJumping;
+	//void jump();
 };
 
 #endif // !__CHARACTER_JUMP_STATE_H__

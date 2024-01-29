@@ -17,12 +17,15 @@ void CharacterJumpState::enterState(Entity* owner)
     if (mapNode != nullptr) {
         _map = dynamic_cast<GameMap*>(mapNode);
     }
+    //isJumping = false;
   
 }
 
 std::string CharacterJumpState::updateState()
 {
-
+    if (KeyboardInput::getInstance()->getKey(EventKeyboard::KeyCode::KEY_SPACE)) {
+        _owner->getPhysicsBody()->applyImpulse(Vec2(0, 1000));
+    }
     return "jump";
 }
 
@@ -30,3 +33,11 @@ void CharacterJumpState::exitState()
 {
     State::exitState();
 }
+
+//void CharacterJumpState::jump()
+//{
+//    log("Jumping");
+//    isJumping = true;
+//}
+
+

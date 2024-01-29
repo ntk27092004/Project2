@@ -12,7 +12,6 @@ public:
     std::string updateState() override;
     void exitState() override;
 private:
-    GameMap* _map;
     float _chaseRange = 0.0000001f;
 };
 

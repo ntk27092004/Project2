@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "Scenes/HelloWorldScene.h"
+#include "Test.h"
 
 
 #if USE_AUDIO_ENGINE
@@ -9,7 +10,7 @@ using namespace cocos2d::experimental;
 
 USING_NS_CC;
 
-static cocos2d::Size designResolutionSize = cocos2d::Size(640, 480);
+static cocos2d::Size designResolutionSize = cocos2d::Size(960, 420);
 static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
 static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
 static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
@@ -65,8 +66,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
 
-    //auto scene = HelloWorld::createScene();
     auto scene = HelloWorld::createScene();
+    //auto scene = Test::create();
 
     //auto scene = DemoPhysic::create();
 

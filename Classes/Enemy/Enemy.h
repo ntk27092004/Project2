@@ -10,11 +10,18 @@
 class Enemy : public Entity
 {
 public:
-	static Enemy* create(EntityInfo* info);
-	virtual bool init(EntityInfo* info) override;
+	static Enemy* getInstance(EntityInfo* info);
+	static void addEnemy(EntityInfo* info);
+	static int getNumberOfEnemy();
+	static Enemy* getEnemy(int index);
 protected:
+	static Enemy* _instance;
+	static std::vector<Enemy*> _enemies;
+	virtual bool init(EntityInfo* info) override;
 	bool loadAnimations() override;
-	EnemyStateMachine* _enemyStateMachine;
+	StateMachine* _enemyStateMachine;
+protected:
+	bool callbackOnContactBegin(PhysicsContact& contact);
 
 };
 #endif // !__ENEMY_H__

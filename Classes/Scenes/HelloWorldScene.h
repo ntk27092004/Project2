@@ -7,6 +7,7 @@
 #include "Character/State/CharacterJumpState.h"
 #include "KeyBoardInput.h"
 
+
 USING_NS_CC;
 
 class HelloWorld : public cocos2d::Scene
@@ -17,18 +18,15 @@ public:
     virtual bool init();
     CREATE_FUNC(HelloWorld);
 protected:
-
     KeyboardInput* _keyboard;
     Character* _character;
     float _moveSpeed;
     GameMap* _gameMap;
-    float velocityY = 0.0f;
-    float gravity = -150.0f;
 
 protected:
     void update(float dt) override;
-    void createPhysicalBorder();
     void onEnter() override;
+    void onMouseDown(EventMouse* event);
 };
 
 #endif // __HELLOWORLD_SCENE_H__
